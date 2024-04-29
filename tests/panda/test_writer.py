@@ -7,6 +7,7 @@ from ophyd_async.core import (
     DEFAULT_TIMEOUT,
     Device,
     DeviceCollector,
+    DeviceNameFilenameProvider,
     SignalR,
     SimSignalBackend,
     StaticDirectoryProvider,
@@ -65,13 +66,12 @@ async def sim_panda(panda_t):
 
 @pytest.fixture
 async def sim_writer(tmp_path, sim_panda) -> PandaHDFWriter:
-    dir_prov = StaticDirectoryProvider(
-        directory_path=str(tmp_path), filename_prefix="", filename_suffix="/data.h5"
-    )
+    fp = DeviceNameFilenameProvider(suffix="/data.h5")
+    dp = StaticDirectoryProvider(fp, tmp_path)
     async with DeviceCollector(sim=True):
         writer = PandaHDFWriter(
             prefix="TEST-PANDA",
-            directory_provider=dir_prov,
+            directory_provider=dp,
             name_provider=lambda: "test-panda",
             panda_device=sim_panda,
         )

@@ -1,9 +1,15 @@
 from ._providers import (
+    DeviceNameFilenameProvider,
     DirectoryInfo,
     DirectoryProvider,
+    DynamicFilenameProvider,
+    FilenameProvider,
     NameProvider,
     ShapeProvider,
     StaticDirectoryProvider,
+    StaticFilenameProvider,
+    UUIDFilenameProvider,
+    YMDDirectoryProvider,
 )
 from .async_status import AsyncStatus
 from .detector import (
@@ -87,6 +93,12 @@ __all__ = [
     "NameProvider",
     "ShapeProvider",
     "StaticDirectoryProvider",
+    "FilenameProvider",
+    "StaticFilenameProvider",
+    "DynamicFilenameProvider",
+    "DeviceNameFilenameProvider",
+    "UUIDFilenameProvider",
+    "YMDDirectoryProvider",
     "StandardReadable",
     "ConfigSignal",
     "HintedSignal",

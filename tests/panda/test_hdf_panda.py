@@ -5,7 +5,11 @@ import pytest
 from bluesky import plan_stubs as bps
 from bluesky.run_engine import RunEngine
 
-from ophyd_async.core import StaticDirectoryProvider, set_sim_value
+from ophyd_async.core import (
+    DeviceNameFilenameProvider,
+    StaticDirectoryProvider,
+    set_sim_value,
+)
 from ophyd_async.core.async_status import AsyncStatus
 from ophyd_async.core.detector import DetectorControl, DetectorTrigger
 from ophyd_async.core.device import Device
@@ -61,10 +65,10 @@ async def sim_hdf_panda(tmp_path):
     class CaptureBlock(Device):
         test_capture: SignalR
 
-    directory_provider = StaticDirectoryProvider(str(tmp_path), filename_prefix="test")
-    sim_hdf_panda = HDFPanda(
-        "HDFPANDA:", directory_provider=directory_provider, name="panda"
-    )
+    fp = DeviceNameFilenameProvider(prefix="test")
+    dp = StaticDirectoryProvider(fp, tmp_path)
+
+    sim_hdf_panda = HDFPanda("HDFPANDA:", directory_provider=dp, name="panda")
     sim_hdf_panda._controller = MockPandaPcapController(sim_hdf_panda.pcap)
     block_a = CaptureBlock(name="block_a")
     block_b = CaptureBlock(name="block_b")
