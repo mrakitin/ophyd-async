@@ -1,4 +1,5 @@
 from ._providers import (
+    AutoIncrementFilenameProvider,
     DeviceNameFilenameProvider,
     DirectoryInfo,
     DirectoryProvider,
@@ -97,6 +98,7 @@ __all__ = [
     "StaticFilenameProvider",
     "DynamicFilenameProvider",
     "DeviceNameFilenameProvider",
+    "AutoIncrementFilenameProvider",
     "UUIDFilenameProvider",
     "YMDDirectoryProvider",
     "StandardReadable",
