@@ -119,16 +119,17 @@ class PandaHDFWriter(DetectorWriter):
 
         to_capture = await get_signals_marked_for_capture(self.capture_signals)
         self._file = None
-        info = self._directory_provider()
+        info = self._directory_provider(device_name=self.panda_device.name)
         # Set the initial values
         await asyncio.gather(
             self.panda_device.data.hdf_directory.set(
                 str(info.root / info.resource_dir)
             ),
             self.panda_device.data.hdf_file_name.set(
-                f"{info.prefix}{self.panda_device.name}{info.suffix}",
+                info.filename,
             ),
             self.panda_device.data.num_capture.set(0),
+            # TODO: Set create_dir_depth once available
         )
 
         # Wait for it to start, stashing the status that tells us when it finishes

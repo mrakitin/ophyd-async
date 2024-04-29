@@ -36,4 +36,5 @@ class NDFileHDF(NDPluginBase):
         self.flush_now = epics_signal_rw(bool, prefix + "FlushNow")
         self.array_size0 = ad_r(int, prefix + "ArraySize0")
         self.array_size1 = ad_r(int, prefix + "ArraySize1")
+        self.create_dir_depth = ad_rw(int, prefix + "CreateDirectory")
         super().__init__(prefix, name)
