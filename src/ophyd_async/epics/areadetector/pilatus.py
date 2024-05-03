@@ -1,6 +1,6 @@
 from bluesky.protocols import Hints
 
-from ophyd_async.core import DirectoryProvider
+from ophyd_async.core import PathProvider
 from ophyd_async.core.detector import StandardDetector
 from ophyd_async.epics.areadetector.controllers.pilatus_controller import (
     PilatusController,
@@ -20,7 +20,7 @@ class PilatusDetector(StandardDetector):
     def __init__(
         self,
         prefix: str,
-        directory_provider: DirectoryProvider,
+        path_provider: PathProvider,
         drv_suffix="cam1:",
         hdf_suffix="HDF1:",
         name="",
@@ -32,7 +32,7 @@ class PilatusDetector(StandardDetector):
             PilatusController(self.drv),
             HDFWriter(
                 self.hdf,
-                directory_provider,
+                path_provider,
                 lambda: self.name,
                 ADBaseShapeProvider(self.drv),
             ),

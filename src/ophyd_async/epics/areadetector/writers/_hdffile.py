@@ -3,21 +3,21 @@ from typing import Iterator, List
 
 from event_model import StreamDatum, StreamResource, compose_stream_resource
 
-from ophyd_async.core import DirectoryInfo
+from ophyd_async.core import PathInfo
 
 from ._hdfdataset import _HDFDataset
 
 
 class _HDFFile:
     """
-    :param directory_info: Contains information about how to construct a StreamResource
+    :param path_info: Contains information about how to construct a StreamResource
     :param full_file_name: Absolute path to the file to be written
     :param datasets: Datasets to write into the file
     """
 
     def __init__(
         self,
-        directory_info: DirectoryInfo,
+        path_info: PathInfo,
         full_file_name: Path,
         datasets: List[_HDFDataset],
     ) -> None:
@@ -25,9 +25,9 @@ class _HDFFile:
         self._bundles = [
             compose_stream_resource(
                 spec="AD_HDF5_SWMR_SLICE",
-                root=str(directory_info.root),
+                root=str(path_info.root),
                 data_key=ds.name,
-                resource_path=str(full_file_name.relative_to(directory_info.root)),
+                resource_path=str(full_file_name.relative_to(path_info.root)),
                 resource_kwargs={
                     "path": ds.path,
                     "multiplier": ds.multiplier,

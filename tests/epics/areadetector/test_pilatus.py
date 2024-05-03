@@ -4,7 +4,7 @@ from bluesky.run_engine import RunEngine
 from ophyd_async.core import (
     DetectorTrigger,
     DeviceCollector,
-    DirectoryProvider,
+    PathProvider,
     TriggerInfo,
     set_sim_value,
 )
@@ -15,10 +15,10 @@ from ophyd_async.epics.areadetector.pilatus import PilatusDetector
 @pytest.fixture
 async def pilatus(
     RE: RunEngine,
-    static_directory_provider: DirectoryProvider,
+    static_path_provider: PathProvider,
 ) -> PilatusDetector:
     async with DeviceCollector(sim=True):
-        adpilatus = PilatusDetector("PILATUS:", static_directory_provider)
+        adpilatus = PilatusDetector("PILATUS:", static_path_provider)
 
     return adpilatus
 

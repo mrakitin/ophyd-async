@@ -34,9 +34,9 @@ def test_initialization(pattern_generator: PatternGenerator):
 
 @pytest.mark.asyncio
 async def test_open_and_close_file(
-    static_directory_provider, pattern_generator: PatternGenerator
+    static_path_provider, pattern_generator: PatternGenerator
 ):
-    await pattern_generator.open_file(static_directory_provider)
+    await pattern_generator.open_file(static_path_provider)
     assert pattern_generator._handle_for_h5_file is not None
     assert isinstance(pattern_generator._handle_for_h5_file, h5py.File)
     pattern_generator.close()
@@ -60,9 +60,9 @@ def test_set_y(pattern_generator: PatternGenerator):
 
 @pytest.mark.asyncio
 async def test_write_image_to_file(
-    static_directory_provider, pattern_generator: PatternGenerator
+    static_path_provider, pattern_generator: PatternGenerator
 ):
-    await pattern_generator.open_file(static_directory_provider)
+    await pattern_generator.open_file(static_path_provider)
 
     await pattern_generator.write_image_to_file()
     assert pattern_generator.written_images_counter == 1

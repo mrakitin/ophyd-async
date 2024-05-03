@@ -22,7 +22,7 @@ from event_model import (
     StreamResource,
 )
 
-from ophyd_async.core import DirectoryInfo, DirectoryProvider
+from ophyd_async.core import PathInfo, PathProvider
 from ophyd_async.core.signal import SignalR, observe_value
 from ophyd_async.core.sim_signal_backend import SimSignalBackend
 from ophyd_async.core.utils import DEFAULT_TIMEOUT
@@ -84,23 +84,23 @@ def generate_interesting_pattern(x: float, y: float) -> float:
 class HdfStreamProvider:
     def __init__(
         self,
-        directory_info: DirectoryInfo,
+        path_info: PathInfo,
         full_file_name: Path,
         datasets: List[DatasetConfig],
     ) -> None:
         self._last_emitted = 0
         self._bundles: List[ComposeStreamResourceBundle] = self._compose_bundles(
-            directory_info, full_file_name, datasets
+            path_info, full_file_name, datasets
         )
 
     def _compose_bundles(
         self,
-        directory_info: DirectoryInfo,
+        path_info: PathInfo,
         full_file_name: Path,
         datasets: List[DatasetConfig],
     ) -> List[StreamAsset]:
-        path = str(full_file_name.relative_to(directory_info.root))
-        root = str(directory_info.root)
+        path = str(full_file_name.relative_to(path_info.root))
+        root = str(path_info.root)
         bundler_composer = ComposeStreamResource()
 
         bundles: List[ComposeStreamResourceBundle] = []
@@ -218,11 +218,11 @@ class PatternGenerator:
         self.y = value
 
     async def open_file(
-        self, directory: DirectoryProvider, multiplier: int = 1
+        self, path_provider: PathProvider, multiplier: int = 1
     ) -> Dict[str, DataKey]:
         await self.sim_signal.connect()
 
-        self.target_path = self._get_new_path(directory)
+        self.target_path = self._get_new_path(path_provider)
 
         self._handle_for_h5_file = h5py.File(self.target_path, "w", libver="latest")
 
@@ -246,11 +246,11 @@ class PatternGenerator:
         # cache state to self
         self._datasets = datasets
         self.multiplier = multiplier
-        self._directory_provider = directory
+        self._path_provider = path_provider
         return full_file_description
 
-    def _get_new_path(self, directory: DirectoryProvider) -> Path:
-        info = directory(device_name="pattern")
+    def _get_new_path(self, path_provider: PathProvider) -> Path:
+        info = path_provider(device_name="pattern")
         filename = info.filename
         new_path: Path = info.root / info.resource_dir / filename
         return new_path
@@ -295,7 +295,7 @@ class PatternGenerator:
                 datasets = self._get_datasets()
                 self._datasets = datasets
                 self._hdf_stream_provider = HdfStreamProvider(
-                    self._directory_provider(),
+                    self._path_provider(),
                     self.target_path,
                     self._datasets,
                 )

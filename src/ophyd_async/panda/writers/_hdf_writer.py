@@ -11,8 +11,8 @@ from ophyd_async.core import (
     DEFAULT_TIMEOUT,
     DetectorWriter,
     Device,
-    DirectoryProvider,
     NameProvider,
+    PathProvider,
     SignalR,
     wait_for_value,
 )
@@ -94,13 +94,13 @@ class PandaHDFWriter(DetectorWriter):
     def __init__(
         self,
         prefix: str,
-        directory_provider: DirectoryProvider,
+        path_provider: PathProvider,
         name_provider: NameProvider,
         panda_device: CommonPandaBlocks,
     ) -> None:
         self.panda_device = panda_device
         self._prefix = prefix
-        self._directory_provider = directory_provider
+        self._path_provider = path_provider
         self._name_provider = name_provider
         self._datasets: List[_HDFDataset] = []
         self._file: Optional[_HDFFile] = None
@@ -119,7 +119,7 @@ class PandaHDFWriter(DetectorWriter):
 
         to_capture = await get_signals_marked_for_capture(self.capture_signals)
         self._file = None
-        info = self._directory_provider(device_name=self.panda_device.name)
+        info = self._path_provider(device_name=self.panda_device.name)
         # Set the initial values
         await asyncio.gather(
             self.panda_device.data.hdf_directory.set(
@@ -205,7 +205,7 @@ class PandaHDFWriter(DetectorWriter):
         if indices_written:
             if not self._file:
                 self._file = _HDFFile(
-                    self._directory_provider(),
+                    self._path_provider(),
                     Path(await self.panda_device.data.hdf_file_name.get_value()),
                     self._datasets,
                 )

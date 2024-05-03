@@ -6,8 +6,8 @@ from bluesky import plan_stubs as bps
 from bluesky.run_engine import RunEngine
 
 from ophyd_async.core import (
-    DeviceNameFilenameProvider,
-    StaticDirectoryProvider,
+    StaticFilenameProvider,
+    StaticPathProvider,
     set_sim_value,
 )
 from ophyd_async.core.async_status import AsyncStatus
@@ -65,10 +65,10 @@ async def sim_hdf_panda(tmp_path):
     class CaptureBlock(Device):
         test_capture: SignalR
 
-    fp = DeviceNameFilenameProvider(prefix="test")
-    dp = StaticDirectoryProvider(fp, tmp_path)
+    fp = StaticFilenameProvider("panda")
+    dp = StaticPathProvider(fp, tmp_path, filename_prefix="test-")
 
-    sim_hdf_panda = HDFPanda("HDFPANDA:", directory_provider=dp, name="panda")
+    sim_hdf_panda = HDFPanda("HDFPANDA:", path_provider=dp, name="panda")
     sim_hdf_panda._controller = MockPandaPcapController(sim_hdf_panda.pcap)
     block_a = CaptureBlock(name="block_a")
     block_b = CaptureBlock(name="block_b")

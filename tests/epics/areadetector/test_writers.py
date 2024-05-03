@@ -6,7 +6,7 @@ import pytest
 from ophyd_async.core import (
     DeviceCollector,
     ShapeProvider,
-    StaticDirectoryProvider,
+    StaticPathProvider,
     set_sim_value,
 )
 from ophyd_async.epics.areadetector.writers import HDFWriter, NDFileHDF
@@ -21,13 +21,13 @@ class DummyShapeProvider(ShapeProvider):
 
 
 @pytest.fixture
-async def hdf_writer(RE, static_filename_provider) -> HDFWriter:
+async def hdf_writer(RE, static_path_provider: StaticPathProvider) -> HDFWriter:
     async with DeviceCollector(sim=True):
         hdf = NDFileHDF("HDF:")
 
     return HDFWriter(
         hdf,
-        StaticDirectoryProvider(static_filename_provider, "some_path"),
+        static_path_provider,
         name_provider=lambda: "test",
         shape_provider=DummyShapeProvider(),
     )

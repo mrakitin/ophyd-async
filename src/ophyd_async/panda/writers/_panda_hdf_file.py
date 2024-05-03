@@ -4,7 +4,7 @@ from typing import Iterator, List
 
 from event_model import StreamDatum, StreamResource, compose_stream_resource
 
-from ophyd_async.core import DirectoryInfo
+from ophyd_async.core import PathInfo
 
 
 @dataclass
@@ -20,7 +20,7 @@ class _HDFDataset:
 class _HDFFile:
     def __init__(
         self,
-        directory_info: DirectoryInfo,
+        path_info: PathInfo,
         full_file_name: Path,
         datasets: List[_HDFDataset],
     ) -> None:
@@ -28,9 +28,9 @@ class _HDFFile:
         self._bundles = [
             compose_stream_resource(
                 spec="AD_HDF5_SWMR_SLICE",
-                root=str(directory_info.root),
+                root=str(path_info.root),
                 data_key=ds.name,
-                resource_path=(f"{str(directory_info.root)}/{full_file_name}"),
+                resource_path=(f"{str(path_info.root)}/{full_file_name}"),
                 resource_kwargs={
                     "name": ds.name,
                     "block": ds.block,

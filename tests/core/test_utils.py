@@ -4,11 +4,11 @@ from ophyd_async.core import (
     DEFAULT_TIMEOUT,
     Device,
     DeviceCollector,
-    DirectoryInfo,
+    PathInfo,
     NotConnected,
     SignalRW,
     SimSignalBackend,
-    StaticDirectoryProvider,
+    StaticPathProvider,
 )
 from ophyd_async.epics.signal import epics_signal_rw
 

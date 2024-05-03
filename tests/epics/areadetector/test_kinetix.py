@@ -4,7 +4,7 @@ from bluesky.run_engine import RunEngine
 from ophyd_async.core import (
     DetectorTrigger,
     DeviceCollector,
-    DirectoryProvider,
+    StaticPathProvider,
     set_sim_value,
 )
 from ophyd_async.epics.areadetector.kinetix import KinetixDetector
@@ -13,10 +13,10 @@ from ophyd_async.epics.areadetector.kinetix import KinetixDetector
 @pytest.fixture
 async def adkinetix(
     RE: RunEngine,
-    static_directory_provider: DirectoryProvider,
+    static_path_provider: StaticPathProvider,
 ) -> KinetixDetector:
     async with DeviceCollector(sim=True):
-        adkinetix = KinetixDetector("KINETIX:", static_directory_provider)
+        adkinetix = KinetixDetector("KINETIX:", static_path_provider)
 
     return adkinetix
 
@@ -78,10 +78,10 @@ async def test_decribe_describes_writer_dataset(adkinetix: KinetixDetector):
 
 
 async def test_can_collect(
-    adkinetix: KinetixDetector, static_directory_provider: DirectoryProvider
+    adkinetix: KinetixDetector, static_path_provider: StaticPathProvider
 ):
-    directory_info = static_directory_provider()
-    full_file_name = directory_info.root / directory_info.resource_dir / "foo.h5"
+    path_info = static_path_provider()
+    full_file_name = path_info.root / path_info.resource_dir / "foo.h5"
     set_sim_value(adkinetix.hdf.full_file_name, str(full_file_name))
     set_sim_value(adkinetix._writer.hdf.file_path_exists, True)
     set_sim_value(adkinetix._writer.hdf.capture, True)
@@ -93,10 +93,8 @@ async def test_can_collect(
     sr_uid = stream_resource["uid"]
     assert stream_resource["data_key"] == "adkinetix"
     assert stream_resource["spec"] == "AD_HDF5_SWMR_SLICE"
-    assert stream_resource["root"] == str(directory_info.root)
-    assert stream_resource["resource_path"] == str(
-        directory_info.resource_dir / "foo.h5"
-    )
+    assert stream_resource["root"] == str(path_info.root)
+    assert stream_resource["resource_path"] == str(path_info.resource_dir / "foo.h5")
     assert stream_resource["path_semantics"] == "posix"
     assert stream_resource["resource_kwargs"] == {
         "path": "/entry/data/data",

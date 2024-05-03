@@ -6,7 +6,7 @@ from bluesky.run_engine import RunEngine
 from ophyd_async.core import (
     DetectorTrigger,
     DeviceCollector,
-    DirectoryProvider,
+    PathProvider,
     TriggerInfo,
     set_sim_value,
 )
@@ -16,10 +16,10 @@ from ophyd_async.epics.areadetector.aravis import AravisDetector
 @pytest.fixture
 async def adaravis(
     RE: RunEngine,
-    static_directory_provider: DirectoryProvider,
+    static_path_provider: PathProvider,
 ) -> AravisDetector:
     async with DeviceCollector(sim=True):
-        adaravis = AravisDetector("ADARAVIS:", static_directory_provider)
+        adaravis = AravisDetector("ADARAVIS:", static_path_provider)
 
     return adaravis
 
@@ -143,10 +143,10 @@ async def test_decribe_describes_writer_dataset(adaravis: AravisDetector):
 
 
 async def test_can_collect(
-    adaravis: AravisDetector, static_directory_provider: DirectoryProvider
+    adaravis: AravisDetector, static_path_provider: PathProvider
 ):
-    directory_info = static_directory_provider()
-    full_file_name = directory_info.root / directory_info.resource_dir / "foo.h5"
+    path_info = static_path_provider()
+    full_file_name = path_info.root / path_info.resource_dir / "foo.h5"
     set_sim_value(adaravis.hdf.full_file_name, str(full_file_name))
     set_sim_value(adaravis._writer.hdf.file_path_exists, True)
     set_sim_value(adaravis._writer.hdf.capture, True)
@@ -158,10 +158,8 @@ async def test_can_collect(
     sr_uid = stream_resource["uid"]
     assert stream_resource["data_key"] == "adaravis"
     assert stream_resource["spec"] == "AD_HDF5_SWMR_SLICE"
-    assert stream_resource["root"] == str(directory_info.root)
-    assert stream_resource["resource_path"] == str(
-        directory_info.resource_dir / "foo.h5"
-    )
+    assert stream_resource["root"] == str(path_info.root)
+    assert stream_resource["resource_path"] == str(path_info.resource_dir / "foo.h5")
     assert stream_resource["path_semantics"] == "posix"
     assert stream_resource["resource_kwargs"] == {
         "path": "/entry/data/data",
