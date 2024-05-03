@@ -2,7 +2,7 @@ import asyncio
 from pathlib import Path
 from typing import AsyncGenerator, AsyncIterator, Dict, List, Optional
 
-from bluesky.protocols import Descriptor, Hints, StreamAsset
+from bluesky.protocols import DataKey, Hints, StreamAsset
 
 from ophyd_async.core import (
     DEFAULT_TIMEOUT,
@@ -40,7 +40,7 @@ class HDFWriter(DetectorWriter):
         self._file: Optional[_HDFFile] = None
         self._multiplier = 1
 
-    async def open(self, multiplier: int = 1) -> Dict[str, Descriptor]:
+    async def open(self, multiplier: int = 1) -> Dict[str, DataKey]:
         self._file = None
         info = self._directory_provider(device_name=self.hdf.name)
         await asyncio.gather(
@@ -53,6 +53,9 @@ class HDFWriter(DetectorWriter):
             self.hdf.file_template.set("%s/%s.h5"),
             self.hdf.create_dir_depth.set(info.create_dir_depth),
             self.hdf.file_write_mode.set(FileWriteMode.stream),
+            # Never use custom xml layout file but use the one defined
+            # in the source code file NDFileHDF5LayoutXML.cpp
+            self.hdf.xml_file_name.set(""),
         )
 
         assert (
@@ -82,7 +85,7 @@ class HDFWriter(DetectorWriter):
                 )
             )
         describe = {
-            ds.name: Descriptor(
+            ds.name: DataKey(
                 source=self.hdf.full_file_name.source,
                 shape=outer_shape + tuple(ds.shape),
                 dtype="array" if ds.shape else "number",

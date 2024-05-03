@@ -37,4 +37,5 @@ class NDFileHDF(NDPluginBase):
         self.array_size0 = ad_r(int, prefix + "ArraySize0")
         self.array_size1 = ad_r(int, prefix + "ArraySize1")
         self.create_dir_depth = ad_rw(int, prefix + "CreateDirectory")
+        self.xml_file_name = ad_rw(str, prefix + "XMLFileName")
         super().__init__(prefix, name)

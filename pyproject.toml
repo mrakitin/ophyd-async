@@ -49,7 +49,7 @@ dev = [
     "pre-commit",
     "pydata-sphinx-theme>=0.12",
     "pyepics>=3.4.2",
-    "pyside6==6.6.2",
+    "pyside6==6.7.0",
     "pytest",
     "pytest-asyncio",
     "pytest-cov",
@@ -58,11 +58,13 @@ dev = [
     "pytest-timeout",
     "ruff",
     "sphinx-autobuild",
+    "sphinxcontrib-mermaid",
     "sphinx-copybutton",
     "sphinx-design",
     "tox-direct",
     "types-mock",
     "types-pyyaml",
+    "colorlog"
 ]
 
 [project.scripts]
