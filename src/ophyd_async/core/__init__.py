@@ -1,5 +1,6 @@
 from ._providers import (
     AutoIncrementFilenameProvider,
+    AutoIncrementingPathProvider,
     FilenameProvider,
     NameProvider,
     PathInfo,
@@ -110,6 +111,7 @@ __all__ = [
     "StaticFilenameProvider",
     "AutoIncrementFilenameProvider",
     "UUIDFilenameProvider",
+    "AutoIncrementingPathProvider",
     "YMDPathProvider",
     "StandardReadable",
     "ConfigSignal",
