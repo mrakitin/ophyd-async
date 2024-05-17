@@ -27,8 +27,8 @@ async def mock_hdf_panda(tmp_path):
     class CaptureBlock(Device):
         test_capture: SignalR
 
-    fp = StaticFilenameProvider("panda")
-    dp = StaticPathProvider(fp, tmp_path, filename_prefix="test-")
+    fp = StaticFilenameProvider("test-panda")
+    dp = StaticPathProvider(fp, tmp_path)
 
     mock_hdf_panda = HDFPanda("HDFPANDA:", path_provider=dp, name="panda")
     block_a = CaptureBlock(name="block_a")
