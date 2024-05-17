@@ -11,7 +11,7 @@ from ._providers import (
     UUIDFilenameProvider,
     YMDPathProvider,
 )
-from .async_status import AsyncStatus
+from .async_status import AsyncStatus, WatchableAsyncStatus
 from .detector import (
     DetectorControl,
     DetectorTrigger,
@@ -104,6 +104,7 @@ __all__ = [
     "AsyncStatus",
     "PathInfo",
     "PathProvider",
+    "WatchableAsyncStatus",
     "NameProvider",
     "ShapeProvider",
     "StaticPathProvider",
