@@ -63,6 +63,8 @@ from .soft_signal_backend import SoftSignalBackend
 from .standard_readable import ConfigSignal, HintedSignal, StandardReadable
 from .utils import (
     DEFAULT_TIMEOUT,
+    CalculatableTimeout,
+    CalculateTimeout,
     Callback,
     NotConnected,
     ReadingValueCallback,
@@ -120,6 +122,8 @@ __all__ = [
     "TriggerInfo",
     "TriggerLogic",
     "HardwareTriggeredFlyable",
+    "CalculateTimeout",
+    "CalculatableTimeout",
     "DEFAULT_TIMEOUT",
     "Callback",
     "NotConnected",
