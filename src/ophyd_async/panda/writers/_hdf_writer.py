@@ -151,7 +151,7 @@ class PandaHDFWriter(DetectorWriter):
                 else split_path[-2]
             )
 
-            for suffix in str(capture_signal.capture_type).split(" "):
+            for suffix in capture_signal.capture_type.split(" "):
                 self._datasets.append(
                     _HDFDataset(
                         name,
