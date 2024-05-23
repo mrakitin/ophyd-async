@@ -107,11 +107,13 @@ class HdfStreamProvider:
 
         bundles = [
             bundler_composer(
-                spec=SLICE_NAME,
-                root=root,
-                resource_path=path,
+                mimetype="application/x-hdf5",
+                uri=f"file://{full_file_name}",
+                # spec=SLICE_NAME,
+                # root=root,
+                # resource_path=path,
                 data_key=d.name.replace("/", "_"),
-                resource_kwargs={
+                parameters={
                     "path": d.path,
                     "multiplier": d.multiplier,
                     "timestamps": "/entry/instrument/NDAttributes/NDArrayTimeStamp",
