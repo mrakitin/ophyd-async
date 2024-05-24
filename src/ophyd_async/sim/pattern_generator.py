@@ -99,8 +99,8 @@ class HdfStreamProvider:
         full_file_name: Path,
         datasets: List[DatasetConfig],
     ) -> List[StreamAsset]:
-        path = str(full_file_name.relative_to(path_info.root))
-        root = str(path_info.root)
+        # path = str(full_file_name.relative_to(path_info.root))
+        # root = str(path_info.root)
         bundler_composer = ComposeStreamResource()
 
         bundles: List[ComposeStreamResourceBundle] = []
