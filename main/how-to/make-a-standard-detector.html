@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Make a StandardDetector &#8212; ophyd-async 0.1.dev560+gb59d1e2 documentation</title>
+    <title>Make a StandardDetector &#8212; ophyd-async 0.1.dev578+gbd6085b documentation</title>
   
   
   
@@ -18,28 +18,29 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=7c7d81c6"></script>
+    <script src="../_static/documentation_options.js?v=77f21b43"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -47,7 +48,7 @@
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'how-to/make-a-standard-detector';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.15.3';
+        DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://blueskyproject.io/ophyd-async/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'main';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
@@ -112,7 +113,7 @@
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
   </button>
   
@@ -121,6 +122,8 @@
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -149,38 +152,38 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item pst-header-nav-item">
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../tutorials.html">
     Tutorials
   </a>
 </li>
 
 
-<li class="nav-item pst-header-nav-item current active">
+<li class="nav-item current active">
   <a class="nav-link nav-internal" href="../how-to.html">
     How-to Guides
   </a>
 </li>
 
 
-<li class="nav-item pst-header-nav-item">
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../explanations.html">
     Explanations
   </a>
 </li>
 
 
-<li class="nav-item pst-header-nav-item">
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../reference.html">
     Reference
   </a>
 </li>
 
 
-<li class="nav-item pst-header-nav-item">
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://blueskyproject.io">
     Bluesky Project
   </a>
@@ -199,7 +202,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -213,15 +216,15 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script></div>
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -232,7 +235,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/bluesky/ophyd-async" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/bluesky/ophyd-async" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -244,7 +247,7 @@ document.write(`
           
           
           
-          <a href="https://pypi.org/project/ophyd-async" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-cube fa-lg" aria-hidden="true"></i></span>
+          <a href="https://pypi.org/project/ophyd-async" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-cube fa-lg" aria-hidden="true"></i>
             <span class="sr-only">PyPI</span></a>
         </li>
 </ul></div>
@@ -255,7 +258,7 @@ document.write(`
   <div class="version-switcher__container dropdown">
     <button id="pst-version-switcher-button-2"
       type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      class="version-switcher__button btn btn-sm dropdown-toggle"
       data-bs-toggle="dropdown"
       aria-haspopup="listbox"
       aria-controls="pst-version-switcher-list-2"
@@ -282,7 +285,7 @@ document.write(`
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -293,7 +296,7 @@ document.write(`
   
 
   
-    <button class="sidebar-toggle secondary-toggle" aria-label="On this page">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
     </button>
   
@@ -319,38 +322,38 @@ document.write(`
           
           
             <div class="navbar-item">
-<nav class="navbar-nav">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item pst-header-nav-item">
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../tutorials.html">
     Tutorials
   </a>
 </li>
 
 
-<li class="nav-item pst-header-nav-item current active">
+<li class="nav-item current active">
   <a class="nav-link nav-internal" href="../how-to.html">
     How-to Guides
   </a>
 </li>
 
 
-<li class="nav-item pst-header-nav-item">
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../explanations.html">
     Explanations
   </a>
 </li>
 
 
-<li class="nav-item pst-header-nav-item">
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../reference.html">
     Reference
   </a>
 </li>
 
 
-<li class="nav-item pst-header-nav-item">
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://blueskyproject.io">
     Bluesky Project
   </a>
@@ -370,15 +373,15 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script></div>
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -389,7 +392,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/bluesky/ophyd-async" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/bluesky/ophyd-async" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -401,7 +404,7 @@ document.write(`
           
           
           
-          <a href="https://pypi.org/project/ophyd-async" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-cube fa-lg" aria-hidden="true"></i></span>
+          <a href="https://pypi.org/project/ophyd-async" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-cube fa-lg" aria-hidden="true"></i>
             <span class="sr-only">PyPI</span></a>
         </li>
 </ul></div>
@@ -412,7 +415,7 @@ document.write(`
   <div class="version-switcher__container dropdown">
     <button id="pst-version-switcher-button-3"
       type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      class="version-switcher__button btn btn-sm dropdown-toggle"
       data-bs-toggle="dropdown"
       aria-haspopup="listbox"
       aria-controls="pst-version-switcher-list-3"
@@ -634,15 +637,11 @@ Here we construct a <a class="reference internal" href="../generated/ophyd_async
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">directory_provider</span><span class="p">:</span> <span class="n">DirectoryProvider</span><span class="p">,</span>
-        <span class="n">name_provider</span><span class="p">:</span> <span class="n">NameProvider</span><span class="p">,</span>
         <span class="n">panda_device</span><span class="p">:</span> <span class="n">CommonPandaBlocks</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">panda_device</span> <span class="o">=</span> <span class="n">panda_device</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_prefix</span> <span class="o">=</span> <span class="n">prefix</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_directory_provider</span> <span class="o">=</span> <span class="n">directory_provider</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name_provider</span> <span class="o">=</span> <span class="n">name_provider</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_datasets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">_HDFDataset</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">_HDFFile</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_multiplier</span> <span class="o">=</span> <span class="mi">1</span>
@@ -651,14 +650,9 @@ Here we construct a <a class="reference internal" href="../generated/ophyd_async
     <span class="k">async</span> <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DataKey</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve and get descriptor of all PandA signals marked for capture&quot;&quot;&quot;</span>
 
-        <span class="c1"># Get capture PVs by looking at panda. Gives mapping of dotted attribute path</span>
-        <span class="c1"># to Signal object</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">capture_signals</span> <span class="o">=</span> <span class="n">get_capture_signals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">panda_device</span><span class="p">)</span>
-
         <span class="c1"># Ensure flushes are immediate</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">panda_device</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">flush_period</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-        <span class="n">to_capture</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_signals_marked_for_capture</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">capture_signals</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_directory_provider</span><span class="p">()</span>
         <span class="c1"># Set the initial values</span>
@@ -674,36 +668,21 @@ Here we construct a <a class="reference internal" href="../generated/ophyd_async
 
         <span class="c1"># Wait for it to start, stashing the status that tells us when it finishes</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">panda_device</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">capture</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name_provider</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">multiplier</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="s2">&quot;All PandA datasets should be scalar, multiplier should be 1&quot;</span>
             <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_datasets</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">attribute_path</span><span class="p">,</span> <span class="n">capture_signal</span> <span class="ow">in</span> <span class="n">to_capture</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">split_path</span> <span class="o">=</span> <span class="n">attribute_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
-            <span class="n">signal_name</span> <span class="o">=</span> <span class="n">split_path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="c1"># Get block names from numbered blocks, eg INENC[1]</span>
-            <span class="n">block_name</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">split_path</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="si">}{</span><span class="n">split_path</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-                <span class="k">if</span> <span class="n">split_path</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()</span>
-                <span class="k">else</span> <span class="n">split_path</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
-            <span class="p">)</span>
 
-            <span class="k">for</span> <span class="n">suffix</span> <span class="ow">in</span> <span class="n">capture_signal</span><span class="o">.</span><span class="n">capture_type</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_datasets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                    <span class="n">_HDFDataset</span><span class="p">(</span>
-                        <span class="n">name</span><span class="p">,</span>
-                        <span class="n">block_name</span><span class="p">,</span>
-                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">block_name</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">signal_name</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">block_name</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">signal_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;-</span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-                        <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                        <span class="n">multiplier</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                    <span class="p">)</span>
-                <span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_describe</span><span class="p">()</span>
 
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_describe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DataKey</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a describe based on the datasets PV</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_datasets</span><span class="p">()</span>
         <span class="n">describe</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="n">ds</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">DataKey</span><span class="p">(</span>
+            <span class="n">ds</span><span class="o">.</span><span class="n">data_key</span><span class="p">:</span> <span class="n">DataKey</span><span class="p">(</span>
                 <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">panda_device</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">hdf_directory</span><span class="o">.</span><span class="n">source</span><span class="p">,</span>
                 <span class="n">shape</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
                 <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;array&quot;</span> <span class="k">if</span> <span class="n">ds</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
@@ -712,6 +691,18 @@ Here we construct a <a class="reference internal" href="../generated/ophyd_async
             <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_datasets</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">describe</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_update_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load data from the datasets PV on the panda, update internal</span>
+<span class="sd">        representation of datasets that the panda will write.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">capture_table</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">panda_device</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_datasets</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">_HDFDataset</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">dataset_name</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">multiplier</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">dataset_name</span> <span class="ow">in</span> <span class="n">capture_table</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">]</span>
 
     <span class="c1"># Next few functions are exactly the same as AD writer. Could move as default</span>
     <span class="c1"># StandardDetector behavior</span>
@@ -775,9 +766,7 @@ Here we construct a <a class="reference internal" href="../generated/ophyd_async
         <span class="n">create_children_from_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">controller</span> <span class="o">=</span> <span class="n">PandaPcapController</span><span class="p">(</span><span class="n">pcap</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pcap</span><span class="p">)</span>
         <span class="n">writer</span> <span class="o">=</span> <span class="n">PandaHDFWriter</span><span class="p">(</span>
-            <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span>
             <span class="n">directory_provider</span><span class="o">=</span><span class="n">directory_provider</span><span class="p">,</span>
-            <span class="n">name_provider</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
             <span class="n">panda_device</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
@@ -886,8 +875,8 @@ Here we construct a <a class="reference internal" href="../generated/ophyd_async
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -898,7 +887,7 @@ Here we construct a <a class="reference internal" href="../generated/ophyd_async
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.3.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
 </p></div>
       
     </div>
